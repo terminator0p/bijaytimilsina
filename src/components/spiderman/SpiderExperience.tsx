@@ -62,7 +62,7 @@ export function IntroAnimation({ onComplete }: { onComplete: () => void }) {
           <span className="logo-fill" />
         </div>
         <p>Er.BIJAY TIMILSINA</p>
-        <span className="intro-caption">REGISTERED COMPUTER ENGINNEER</span>
+        <span className="intro-caption">REGISTERED COMPUTER ENGINEER</span>
         <div className="intro-track" aria-hidden="true">
           <span />
         </div>
