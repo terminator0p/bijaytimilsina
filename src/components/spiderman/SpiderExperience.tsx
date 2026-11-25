@@ -19,7 +19,6 @@ import {
   Volume2,
   Youtube,
 } from "lucide-react";
-import SpiderMark from "../SpiderMark";
 import {
   profile,
   socials,
@@ -30,6 +29,13 @@ import {
 
 export function IntroAnimation({ onComplete }: { onComplete: () => void }) {
   const reduced = useReducedMotion();
+  useEffect(() => {
+    const audio = new Audio("/spiderman_web_swing_loading_loud.wav");
+    audio.volume = 0.72;
+    void audio.play().catch(() => {
+      // Browsers may block autoplay until the visitor interacts with the page.
+    });
+  }, []);
   useEffect(() => {
     const timer = setTimeout(onComplete, reduced ? 100 : 3200);
     return () => clearTimeout(timer);
@@ -55,8 +61,8 @@ export function IntroAnimation({ onComplete }: { onComplete: () => void }) {
           />
           <span className="logo-fill" />
         </div>
-        <p>BIJAY TIMILSINA</p>
-        <span className="intro-caption">A NEW WORLD OF POSSIBILITIES</span>
+        <p>Er.BIJAY TIMILSINA</p>
+        <span className="intro-caption">REGISTERED COMPUTER ENGINNEER</span>
         <div className="intro-track" aria-hidden="true">
           <span />
         </div>
@@ -98,7 +104,7 @@ export function NavigationBar({ onHire }: { onHire: () => void }) {
   return (
     <header className="sp-nav">
       <a href="#main" className="sp-logo" aria-label="Bijay Timilsina home">
-        <SpiderMark />
+        <img src="/images/spiderman/spider-logo.png" alt="" />
       </a>
       <nav
         aria-label="Main navigation"
@@ -197,8 +203,8 @@ export function PortfolioStats() {
     <section className="reviews" aria-label="Portfolio highlights">
       <h2>SPEC SHEET</h2>
       {[
-        { name: "Projects", rating: "12+", quote: "Shipped & in progress" },
-        { name: "Clients", rating: "5+", quote: "Happy collaborations" },
+        { name: "Projects", rating: "99+", quote: "Shipped & in progress" },
+        { name: "Clients", rating: "999+", quote: "Happy collaborations" },
         { name: "Support", rating: "24", quote: "Hours when it counts" },
       ].map((r) => (
         <div className="review" key={r.name}>
@@ -452,7 +458,12 @@ export function ActionModal({ onClose }: { onClose: () => void }) {
         >
           <X />
         </button>
-        <SpiderMark />
+        <img
+          className="hire-logo"
+          src="/images/spiderman/spider-logo.png"
+          alt=""
+          aria-hidden="true"
+        />
         <span className="eyebrow">LET&apos;S BUILD THE NEXT ONE</span>
         <h2>Hire Bijay Timilsina.</h2>
         <p>
@@ -460,6 +471,9 @@ export function ActionModal({ onClose }: { onClose: () => void }) {
           websites, Android apps, and digital content.
         </p>
         <ContactForm idPrefix="hire" />
+        <button className="cancel-button" type="button" onClick={onClose}>
+          Cancel
+        </button>
       </motion.div>
     </motion.div>
   );
@@ -601,12 +615,12 @@ export function HeroSection({
         <button className="primary-button" onClick={onHire}>
           LET&apos;S BUILD <ArrowRight size={19} />
         </button>
-        <div className="platforms">
+        {/* <div className="platforms">
           <span className="ps-mark">BT</span>
           <span className="platform-divider" />
           <span>UI / UX</span>
           <span className="platform-note">PRESS POWER TO BOOT</span>
-        </div>
+        </div> */}
       </motion.div>
       <motion.aside
         className="hero-aside"
@@ -707,7 +721,6 @@ export default function SpiderExperience() {
                 </button>
               </div>
             </motion.div>
-            <SpiderMark />
           </section>
           <section className="story-section" id="skills">
             <motion.div
@@ -732,7 +745,6 @@ export default function SpiderExperience() {
                 </a>
               </div>
             </motion.div>
-            <SpiderMark />
           </section>
           <section className="story-section" id="services">
             <motion.div
@@ -757,7 +769,6 @@ export default function SpiderExperience() {
                 </button>
               </div>
             </motion.div>
-            <SpiderMark />
           </section>
           <section className="story-section" id="contact">
             <motion.div
@@ -797,7 +808,7 @@ export default function SpiderExperience() {
                     </a>
                   </div>
                   <div className="social-list">
-                    {socials.slice(0, 3).map((s) => (
+                    {socials.slice(0, 4).map((s) => (
                       <a
                         key={s.label}
                         href={s.url}

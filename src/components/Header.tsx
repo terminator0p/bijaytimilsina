@@ -27,7 +27,7 @@ export default function Header() {
     >
       <Link className="brand" href="/" aria-label="Bijay Timilsina home">
         <span className="brand-mark">
-          b<span>.</span>
+          <img src="/images/spiderman/spider-logo.png" alt="" />
         </span>
         <span>
           BIJAY

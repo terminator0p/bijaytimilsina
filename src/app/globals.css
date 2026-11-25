@@ -71,6 +71,12 @@ button {
 }
 .sp-experience {
   overflow: hidden;
+  background-image: url("/images/spiderman/spider-logo.png");
+  background-repeat: no-repeat;
+  background-position: 92% 18%;
+  background-size: min(34vw, 360px);
+  background-attachment: fixed;
+  background-blend-mode: screen;
 }
 .sp-nav {
   height: 116px;
@@ -93,9 +99,11 @@ button {
   place-items: center;
   transition: background 0.3s;
 }
-.sp-logo svg {
-  width: 32px;
-  height: 41px;
+.sp-logo img {
+  width: 31px;
+  height: 43px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
 }
 .sp-logo:hover {
   background: #ffffff20;
@@ -249,16 +257,49 @@ button {
   letter-spacing: -1.4px;
   line-height: 1.05;
   font-weight: 800;
-  background: white;
-  color: #8c1c2c;
+  color: #fff;
   width: max-content;
-  padding: 0 4px;
+  padding: 0;
   margin-bottom: 11px;
 }
-.hero-copy h1 {
+.brand-mark {
+  display: grid;
+  place-items: center;
+}
+.brand-mark img {
+  width: 34px;
+  height: 42px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+.site-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px 6%;
+  background: #160509;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-family: var(--font-display);
-  font-stretch: condensed;
-  font-weight: 800;
+  font-size: 21px;
+  letter-spacing: 1px;
+  line-height: .8;
+}
+.brand small { font-size: 11px; letter-spacing: 2px; }
+.navigation { display: flex; gap: 28px; font-size: 12px; letter-spacing: 1px; }
+.navigation a:hover, .navigation a[aria-current="page"] { color: #f7a6ae; }
+.header-cta { border: 1px solid #ffffff45; border-radius: 999px; padding: 10px 16px; font-size: 11px; letter-spacing: 1px; }
+.menu-toggle { display: none; }
+.hero-copy h1 {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
   font-size: clamp(64px, 7.1vw, 112px);
   letter-spacing: -2.3px;
   line-height: 0.9;
@@ -635,9 +676,23 @@ button {
 }
 .story-section {
   position: relative;
+  isolation: isolate;
   padding: 110px 10%;
   background: #16060b;
   border-top: 1px solid #ffffff10;
+}
+.story-section::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  top: 8%;
+  right: 7%;
+  width: min(24vw, 280px);
+  height: 84%;
+  background: url("/images/spiderman/spider-logo.png") center / contain no-repeat;
+  opacity: 0.055;
+  filter: brightness(0.8) contrast(1.2);
 }
 .story-section > div {
   position: relative;
@@ -680,14 +735,6 @@ button {
   letter-spacing: 1px;
   border-bottom: 1px solid #8f4f5c;
   padding: 15px 0;
-}
-.story-section > svg {
-  position: absolute;
-  height: 280px;
-  width: 240px;
-  right: 10%;
-  top: 60px;
-  opacity: 0.035;
 }
 .sp-footer {
   display: flex;
@@ -861,6 +908,15 @@ button {
   flex-wrap: wrap;
   gap: 18px;
 }
+.standalone {
+  min-height: 100vh;
+  background-image: url("/images/spiderman/spider-logo.png");
+  background-repeat: no-repeat;
+  background-position: 92% 22%;
+  background-size: min(34vw, 360px);
+  background-attachment: fixed;
+  background-blend-mode: screen;
+}
 .contact-panel .social-list a {
   font-size: 12px;
   letter-spacing: 1.2px;
@@ -983,14 +1039,13 @@ button {
   max-width: 560px;
   text-align: center;
   padding: 40px;
-  max-height: min(92vh, 900px);
-  overflow: auto;
 }
-.store-modal > svg {
+.store-modal .hire-logo {
   height: 90px;
   width: 80px;
   margin: 0 auto 25px;
-  color: #ef4a65;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
 }
 .store-modal .eyebrow {
   display: block;
@@ -1007,6 +1062,17 @@ button {
 .store-modal .primary-button {
   gap: 15px;
   font-size: 10px;
+}
+.cancel-button {
+  margin: 14px auto 0;
+  display: block;
+  color: #e8a2ab;
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  text-decoration: underline;
+}
+.cancel-button:hover {
+  color: #fff;
 }
 @keyframes aura {
   from {
@@ -1093,6 +1159,10 @@ button {
   }
 }
 @media (max-width: 760px) {
+  .site-header { padding: 18px 6%; }
+  .navigation { display: none; }
+  .navigation.open { display: flex; position: absolute; top: 76px; left: 6%; right: 6%; flex-direction: column; padding: 18px; background: #280810; border: 1px solid #ffffff20; border-radius: 8px; }
+  .menu-toggle { display: block; }
   .sp-nav {
     height: 90px;
     padding: 0 6%;
@@ -1102,7 +1172,7 @@ button {
     width: 45px;
     height: 45px;
   }
-  .sp-logo svg {
+  .sp-logo img {
     width: 27px;
     height: 34px;
   }
@@ -1318,6 +1388,23 @@ button {
   }
   .store-modal h2 {
     font-size: 27px;
+  }
+  .store-modal .hire-logo {
+    height: 58px;
+    margin-bottom: 12px;
+  }
+  .store-modal > p {
+    margin: 12px 0 16px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .store-modal .contact-form {
+    gap: 6px;
+    padding: 16px;
+  }
+  .store-modal .contact-form input,
+  .store-modal .contact-form textarea {
+    padding: 10px 12px;
   }
   .intro-logo {
     width: min(48vw, 160px);

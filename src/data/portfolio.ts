@@ -5,6 +5,7 @@ export const profile = {
   location: "Lakeside, Pokhara, Nepal",
   url: "https://bijaytimilsina.com.np",
   contactEndpoint:
+    process.env.NEXT_PUBLIC_CONTACT_ENDPOINT ??
     "https://contact.kirandhakal.me/v1/forms/frm_7a-fq9T7yfRIshKDSQytMcnK/submissions",
 };
 export const socials = [

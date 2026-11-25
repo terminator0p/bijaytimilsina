@@ -98,7 +98,7 @@ export default function ContactSection() {
             </a>
           </div>
           <div className="social-list">
-            {socials.slice(0, 3).map((s) => (
+            {socials.slice(0, 4).map((s) => (
               <a key={s.label} href={s.url} target="_blank" rel="noreferrer">
                 {s.label}
               </a>
