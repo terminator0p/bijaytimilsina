@@ -609,7 +609,7 @@ export function HeroSection({
         <p className="hero-subtitle">TIMILSINA</p>
         <p className="hero-description">
           Crafting exceptional digital experiences through clean code and
-          thoughtful design. Computer engineering student, freelancer, gamer,
+          thoughtful design. Registered Computer engineer, freelancer, gamer,
           and Android developer — from Lakeside, Pokhara to the wider web.
         </p>
         <button className="primary-button" onClick={onHire}>
